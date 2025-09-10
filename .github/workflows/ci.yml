@@ -36,3 +36,39 @@ jobs:
 
       - name: Lint code for consistent style
         run: bin/rubocop --config .rubocop.yml -f github --debug
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsqlite3-dev
+
+      - name: Set up environment
+        run: |
+          echo "RAILS_ENV=test" >> $GITHUB_ENV
+          if [ ! -f config/database.yml ]; then
+            echo -e "test:\n  adapter: sqlite3\n  database: db/test.sqlite3\n  pool: 5\n  timeout: 5000" > config/database.yml
+          fi
+
+      - name: Install gems
+        run: bundle install
+
+      - name: Set up database
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+
+      - name: Run tests
+        run: bundle exec rspec
