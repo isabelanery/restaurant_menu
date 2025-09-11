@@ -1,9 +1,14 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# db/seeds.rb
+require 'factory_bot_rails'
+
+MenuItem.destroy_all
+Menu.destroy_all
+
+5.times do
+  FactoryBot.create(:menu, :with_menu_items)
+end
+
+menu = FactoryBot.create(:menu, name: 'Special Dinner Menu', description: 'A curated selection of gourmet dishes')
+FactoryBot.create(:menu_item, menu: menu, name: 'Grilled Salmon', price: 24.99)
+FactoryBot.create(:menu_item, menu: menu, name: 'Truffle Risotto', price: 19.99)
+FactoryBot.create(:menu_item, menu: menu, name: 'Chocolate Lava Cake', price: 8.99)
