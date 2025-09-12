@@ -1,24 +1,58 @@
-# README
+# Restaurant Menu API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails API for managing restaurant menus and their items.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- Ruby 3.3.2
+- Rails 8.0.2.1
+- SQLite3
+- Bundler
 
-* System dependencies
+## Setup and Running Locally
 
-* Configuration
+1. Clone the repository:
 
-* Database creation
+   ```bash
+   git clone https://github.com/isabelanery/restaurant_menu.git
+   cd restaurant_menu
+   ```
 
-* Database initialization
+2. Install dependencies:
 
-* How to run the test suite
+   ```bash
+   bundle install
+   ```
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Set up the database:
 
-* Deployment instructions
+   ```bash
+   rails db:migrate
+   ```
 
-* ...
+4. Start the server:
+
+   ```bash
+   rails server
+   ```
+
+5. Access the API at `http://localhost:3000`. Example endpoints:
+
+   - `GET /api/menus` - List all menus
+   - `GET /api/menus/:menu_id` - Get a specific menu with items
+   - `GET /api/menus/:menu_id/menu_items` - List items for a menu
+   - `GET /api/menus/:menu_id/menu_items/:id` - Get a specific menu item
+
+## Running Tests
+
+1. Ensure test dependencies are installed:
+
+   ```bash
+   bundle install
+   ```
+
+2. Run the test suite:
+
+   ```bash
+   rspec
+   ```
