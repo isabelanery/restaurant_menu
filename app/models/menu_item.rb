@@ -1,5 +1,8 @@
 class MenuItem < ApplicationRecord
-  belongs_to :menu
-  validates :name, presence: true, allow_blank: false
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  has_many :menu_prices, dependent: :destroy
+  has_many :menus, through: :menu_prices
+
+  validates :name, presence: true,
+                   allow_blank: false,
+                   uniqueness: { case_sensitive: false }
 end
