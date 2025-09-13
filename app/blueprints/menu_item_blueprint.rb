@@ -1,5 +1,8 @@
 class MenuItemBlueprint < Blueprinter::Base
-  identifier :id
+  fields :name
 
-  fields :name, :price, :description
+  view :details do
+    fields :id
+    fields :description
+  end
 end

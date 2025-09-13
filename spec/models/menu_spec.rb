@@ -23,15 +23,17 @@ RSpec.describe Menu, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:menu_items).dependent(:destroy) }
+    it { should belong_to(:restaurant) }
+    it { should have_many(:menu_items).through(:menu_prices) }
   end
 
   describe 'dependent: :destroy' do
     let(:menu) { create(:menu) }
-    let!(:menu_item) { create(:menu_item, menu: menu) }
+    let(:menu_item) { create(:menu_item) }
+    let!(:menu_prices) { create(:menu_price, menu: menu, menu_item: menu_item) }
 
     it 'destroys associated menu_items when menu is destroyed' do
-      expect { menu.destroy }.to change { MenuItem.count }.by(-1)
+      expect { menu.destroy }.to change { MenuPrice.count }.by(-1)
     end
   end
 end
