@@ -12,4 +12,5 @@ test:
 	rspec
 
 import:
+	bin/rails db:create db:migrate db:seed
 	rake 'import:json[restaurant_data.json]'
