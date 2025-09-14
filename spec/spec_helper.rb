@@ -16,6 +16,14 @@ require 'factory_bot'
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.before(:suite) do
+    $VERBOSE = nil # Silencia todos os avisos do Ruby
+  end
+
+  config.after(:suite) do
+    $VERBOSE = true # Restaura o nível de verbosidade padrão
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
