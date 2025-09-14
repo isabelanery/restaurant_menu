@@ -10,3 +10,6 @@ test:
 	bundle install
 	bin/rails RAILS_ENV=test db:create db:migrate
 	rspec
+
+import:
+	rake 'import:json[restaurant_data.json]'
