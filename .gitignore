@@ -36,3 +36,9 @@
 
 # Ignore HTTP testing helpers
 /request/*
+
+# Ignore test coverage files
+.last_run.json
+.resultset.json
+.resultset.json.lock
+/coverage

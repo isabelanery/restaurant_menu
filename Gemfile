@@ -63,4 +63,8 @@ group :test do
   # RSpec helpers
   gem 'rspec-json_expectations'
   gem 'shoulda-matchers'
+
+  # Tests coverage
+  gem 'simplecov', require: false
+  gem 'simplecov-json', require: false
 end
