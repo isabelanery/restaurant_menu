@@ -164,6 +164,12 @@ You can run tests using either the `Makefile` or the manual process.
    make test
    ```
 
+2. Run the test suite with coverage report:
+
+   ```bash
+   make test_coverage
+   ```
+
 ### Option 2: Manual Process
 
 1. Ensure test dependencies are installed:
@@ -182,4 +188,10 @@ You can run tests using either the `Makefile` or the manual process.
 
    ```bash
    rspec
+   ```
+
+4. Run the test suite with coverage:
+
+   ```bash
+   COVERAGE=true rspec
    ```
