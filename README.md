@@ -74,6 +74,32 @@ You can set up and run the application using either the `Makefile` commands or t
    - `GET /api/menu_items/:id` - Get a specific menu item
    - `POST /api/import_restaurants` - Import restaurant data from a JSON payload
 
+## Generating API Documentation with Swagger
+
+The API includes Swagger-generated documentation for easy exploration of endpoints and their details.
+
+### Using Makefile
+
+1. Generate and view the Swagger API documentation:
+
+   ```bash
+   make api_docs
+   ```
+
+   This command:
+   - Creates and migrates the database (`bin/rails db:create db:migrate`).
+   - Runs the API request specs to ensure endpoints are working (`bundle exec rspec spec/requests/api`).
+   - Starts the Rails server (`rails s`).
+
+2. Access the Swagger documentation:
+
+   - Open your browser and navigate to `http://localhost:3000/api-docs/index.html`.
+
+### Notes
+
+- Ensure the Rails server is running to access the Swagger documentation.
+- The Swagger interface provides an interactive way to explore all available API endpoints, including request/response formats and example payloads.
+
 ## Importing Restaurant Data
 
 The API supports importing restaurant data (including menus and menu items) from a JSON file or payload. This can be done via an HTTP endpoint or a rake task.

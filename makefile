@@ -17,3 +17,8 @@ test_coverage:
 import:
 	bin/rails db:create db:migrate
 	rake 'import:json[restaurant_data.json]'
+
+api_docs:
+	bin/rails db:create db:migrate
+	bundle exec rspec spec/requests/api
+	rails s

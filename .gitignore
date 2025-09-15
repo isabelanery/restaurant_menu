@@ -42,3 +42,6 @@
 .resultset.json
 .resultset.json.lock
 /coverage
+
+# Ignore swagger files
+/swagger/v1/swagger.json
