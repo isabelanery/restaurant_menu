@@ -8,6 +8,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 # that will avoid rails generators crashing because migrations haven't been run yet
 # return unless Rails.env.test?
 require 'rspec/rails'
+require 'swagger_helper'
+require File.expand_path('../config/environment', __dir__)
 require 'faker'
 require 'rspec/json_expectations'
 require 'shoulda/matchers'
