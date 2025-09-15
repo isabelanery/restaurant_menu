@@ -14,6 +14,7 @@ RSpec.describe Api::MenuItemsController, type: :controller do
       expect(response.parsed_body).to include_json(
         menu_items.map do |item|
           {
+            id: item.id,
             name: item.name
           }
         end
@@ -21,7 +22,7 @@ RSpec.describe Api::MenuItemsController, type: :controller do
     end
 
     it 'renders menu items using MenuItemBlueprint' do
-      expect(response.body).to eq(MenuItemBlueprint.render(menu_items))
+      expect(response.body).to eq(MenuItemBlueprint.render(menu_items, view: :with_id))
     end
   end
 
