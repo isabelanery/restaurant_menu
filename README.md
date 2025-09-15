@@ -128,7 +128,7 @@ The API supports importing restaurant data (including menus and menu items) from
       - Make sure the database is set up. If you haven't already created and migrated the database, run:
 
          ```bash
-         bin/rails db:create db:migrate db:seed
+         bin/rails db:create db:migrate
          ```
 
    - Run the task:
@@ -195,3 +195,30 @@ You can run tests using either the `Makefile` or the manual process.
    ```bash
    COVERAGE=true rspec
    ```
+
+## Directory Structure
+
+The project adheres to a standard Ruby on Rails directory structure, enhanced with conventions for clarity and modularity. Below is a detailed breakdown of key directories and their purposes:
+
+| Directory         | Purpose                                                                 |
+|-------------------|-------------------------------------------------------------------------|
+| `app/`            | Core application code, organized to enforce separation of concerns.      |
+| `app/controllers/`| Handles HTTP requests and defines API endpoints (e.g., `RestaurantsController`). |
+| `app/models/`     | Defines database entities (e.g., `Restaurant`, `Menu`) with ActiveRecord validations. |
+| `app/services/`   | Manages complex business logic, such as JSON import processing, to keep controllers and models lightweight. |
+| `app/blueprints/` | Serializes data for JSON responses using the Blueprinter gem, ensuring consistent output. |
+| `app/jobs/`       | Reserved for future background tasks using ActiveJob (currently unused). |
+| `app/mailers/`    | Reserved for future email-sending logic (currently unused).              |
+| `config/`         | Configures application settings, including `routes.rb`, database, and initializers. |
+| `db/`             | Manages database-related files for SQLite, including migrations, `seeds.rb`, and `schema.rb`. |
+| `db/migrations/`  | Defines database schema changes.                                        |
+| `db/seeds.rb`     | Populates the database with initial or test data.                       |
+| `db/schema.rb`    | Represents the current database schema.                                 |
+| `spec/`           | Contains RSpec tests mirroring the `app/` structure for unit, integration, and system testing. |
+| `lib/`            | Stores reusable utility code and modules for shared logic.              |
+| `public/`         | Stores static assets served directly by the web server (e.g., error pages).  |
+| `storage/`        | Manages file uploads and persistent storage.                           |
+| `tmp/`            | Holds temporary files generated during runtime.                        |
+| `log/`            | Contains application logs for debugging and monitoring.                |
+| `bin/`            | Includes executable scripts for Rails tasks (e.g., `bin/rails`, `bin/setup`). |
+| `Makefile`        | Defines shortcuts for common tasks (e.g., `make server`, `make test`) to enhance productivity. |

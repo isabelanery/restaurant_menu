@@ -15,5 +15,5 @@ test_coverage:
 	COVERAGE=true rspec
 
 import:
-	bin/rails db:create db:migrate db:seed
+	bin/rails db:create db:migrate
 	rake 'import:json[restaurant_data.json]'
