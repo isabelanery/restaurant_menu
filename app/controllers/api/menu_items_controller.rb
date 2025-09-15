@@ -2,7 +2,7 @@ module Api
   class MenuItemsController < ApplicationController
     def index
       menu_items = MenuItem.all
-      render json: MenuItemBlueprint.render(menu_items)
+      render json: MenuItemBlueprint.render(menu_items, view: :with_id)
     end
 
     def show
